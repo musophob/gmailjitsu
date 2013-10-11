@@ -16,7 +16,7 @@ First and foremost it's a productivity hack - you can check for a specific email
 ## Installation ##
 
 1. Download it
-2. Put the `gmailjitsu` executable somewhere in your [`$PATH`](http://en.wikipedia.org/wiki/PATH_(variable)) and `chomod +x` it
+2. Put the `gmailjitsu` executable somewhere in your [`$PATH`](http://en.wikipedia.org/wiki/PATH_(variable)) along with the other bash files and `chomod +x` 
 3. Open a shell and type `gmailjitsu ?`. Read...
 
 
