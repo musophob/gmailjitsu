@@ -32,18 +32,23 @@ Some cool ways to customise `gmailjitsu` may or may not include:
 **Pressing items:**
 
 * case insensitive `$QUERY`
-* check for `~/.jitsurc`
 * error message for invalid credentials with try again loop
+* check for `~/.jitsurc` username and pw
+* check message contents for `$QUERY`
 
 **Nice to haves:**
 
+* Optional "show msg preview"
 * Option to harvest Mac OS keychain for login [http://brettterpstra.com/2013/02/15/gmail-in-the-shell/](http://brettterpstra.com/2013/02/15/gmail-in-the-shell/).
 * More `$QUERY` aliases to open various views of gmail.
 
 **Bad-assery:**
 
 * Communicate with the Bash/ZSH prompt somehow. Maybe even an semi-permanent variable that can be set on the fly and cause `gmailjitsu` to report back to the `$PROMPT` if she sees land (or matching emails).
-* Parse email through a work detection algorithm and complete any work that needs to be done as a background process, except for fun work.
+* More gmail interactions within CLI
+  * inline replies (with $EDITOR)
+  * compose new message
+  * check labels
 
 **Superfluous features:**
 
