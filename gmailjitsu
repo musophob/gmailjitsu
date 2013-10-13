@@ -1,9 +1,7 @@
 #!/usr/bin/env bash
 
 ARGS="${*}"
-
 PROMPT="\n\xe2\x9e\x94"
-
 JITSURC="/Users/sean/.jitsurc"
 
 function settings () {
@@ -34,7 +32,7 @@ function settings () {
     echo -ne "To store your password, type it here. " $PROMPT " "
     read -s B44e7c17ed
     echo
-    if [ "$C57b5e065a" != "" ]; then
+    if [ "$B44e7c17ed" != "" ]; then
       echo
       echo "Roger"
       echo
@@ -46,7 +44,6 @@ function settings () {
       echo
     fi
     
-
     if [ $C57b5e065a ] || [ $B44e7c17ed ]; then
         
         >| $JITSURC
@@ -59,6 +56,7 @@ function settings () {
             echo "$B44e7c17ed" >> $JITSURC
         fi
     fi
+
   exit 1
 }
 
@@ -127,17 +125,18 @@ gmail_fetch_feed () {
 gmail_inbox () {
     C57b5e065a=$(sed -n '1p' "$JITSURC")
     B44e7c17ed=$(sed -n '2p' "$JITSURC")
-    gmail_fetch_feed $C57b5e065a | gmail_parse_feed
+    gmail_fetch_feed $C57b5e065a:$B44e7c17ed | gmail_parse_feed
 }
 
 
 if [ $QUERY ]; then
-    echo "Here is query:"
-    echo $QUERY
-    echo "Above"
+    echo
     RESULTS=$(gmail_inbox | grep "$QUERY")
-    echo "$RESULTS"
-    
+    if [ -z "$RESULTS" ]; then
+      echo "NO MATCH"
+    else
+      echo "$RESULTS"
+    fi
 elif [ -z "$QUERY" ]; then
     echo
     INBOX=$(gmail_inbox)
@@ -153,8 +152,6 @@ if [ "$GO_TO_GMAIL" == "y" ]; then
 fi
 
 
-echo
-echo -e "(...bye)"
 echo
 
 exit 1
