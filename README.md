@@ -31,7 +31,6 @@ Some cool ways to customise `gmailjitsu` may or may not include:
 
 **Pressing items:**
 
-* case insensitive `$QUERY`
 * error message for invalid credentials with try again loop
 * check for `~/.jitsurc` username and pw
 * check message contents for `$QUERY`

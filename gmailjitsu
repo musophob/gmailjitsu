@@ -88,7 +88,7 @@ echo "☯ ☯ ☯ ☯ ☯ ☯    gmailjitsu    ☯ ☯ ☯ ☯ ☯ ☯"
 echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 echo
 echo -ne "Enter your search, or press enter to see all messages." $PROMPT " "
-read QUERY
+read -a QUERY
 
 
 set -o errtrace
@@ -131,7 +131,7 @@ gmail_inbox () {
 
 if [ $QUERY ]; then
     echo
-    RESULTS=$(gmail_inbox | grep "$QUERY")
+    RESULTS=$(gmail_inbox | grep -i "$QUERY")
     if [ -z "$RESULTS" ]; then
       echo "NO MATCH"
     else
