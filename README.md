@@ -16,7 +16,7 @@ First and foremost it's a productivity hack - you can check for a specific email
 ## Installation ##
 
 1. Download it
-2. Put the `gmailjitsu` executable somewhere in your [`$PATH`](http://en.wikipedia.org/wiki/PATH_(variable)) along with the other bash files and `chomod +x` 
+2. Put the `gmailjitsu` executable and all `.bash` files somewhere in your [`$PATH`](http://en.wikipedia.org/wiki/PATH_(variable)) and `chomod +x`
 3. Open a shell and type `gmailjitsu --help`. Read...
 
 
@@ -32,7 +32,6 @@ Some cool ways to customise `gmailjitsu` may or may not include:
 **Pressing items:**
 
 * error message for invalid credentials with try again loop
-* check for `~/.jitsurc` username and pw
 * check message contents for `$QUERY`
 
 **Nice to haves:**

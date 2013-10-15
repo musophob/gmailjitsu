@@ -2,7 +2,7 @@
 
 ARGS="${*}"
 PROMPT="\n\xe2\x9e\x94"
-JITSURC="/Users/sean/.jitsurc"
+JITSURC="$HOME/.jitsurc"
 
 function settings () {
     echo
@@ -15,7 +15,7 @@ function settings () {
     echo "are not responsible for any bad things that might happen."
     echo
 
-    echo -ne "To store your user name, type it here (without @gmail.com). " $PROMPT " "
+    echo -ne "To store your user name, type it here. " $PROMPT " "
     read C57b5e065a
     if [ "$C57b5e065a" != "" ]; then
       echo
@@ -90,7 +90,6 @@ echo
 echo -ne "Enter your search, or press enter to see all messages." $PROMPT " "
 read -a QUERY
 
-
 set -o errtrace
 set -o errexit
 set -o nounset
@@ -119,15 +118,23 @@ gmail_parse_feed_characters () {
 }
 
 gmail_fetch_feed () {
-    curl -u $C57b5e065a --silent 'https://mail.google.com/mail/feed/atom'
+    if [ -f $JITSURC ]; then
+      C57b5e065a=$(sed -n '1p' "$JITSURC")
+      B44e7c17ed=$(sed -n '2p' "$JITSURC")
+      curl -u $C57b5e065a:$B44e7c17ed --silent 'https://mail.google.com/mail/feed/atom'
+    else
+      curl -u "$USER" --silent 'https://mail.google.com/mail/feed/atom'
+    fi
 }
 
 gmail_inbox () {
-    C57b5e065a=$(sed -n '1p' "$JITSURC")
-    B44e7c17ed=$(sed -n '2p' "$JITSURC")
-    gmail_fetch_feed $C57b5e065a:$B44e7c17ed | gmail_parse_feed
+    gmail_fetch_feed | gmail_parse_feed
 }
 
+if [ ! -f $JITSURC ]; then
+  echo -n "Username: "
+  read USER
+fi
 
 if [ $QUERY ]; then
     echo
