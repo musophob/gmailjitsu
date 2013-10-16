@@ -88,7 +88,7 @@ echo "☯ ☯ ☯ ☯ ☯ ☯    gmailjitsu    ☯ ☯ ☯ ☯ ☯ ☯"
 echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 echo
 echo -ne "Enter your search, or press enter to see all messages." $PROMPT " "
-read -a QUERY
+read QUERY
 
 set -o errtrace
 set -o errexit
