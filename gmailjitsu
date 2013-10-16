@@ -221,12 +221,10 @@ fi
 
 if [ $QUERY ]; then
     echo
-    RESULTS=$(gmail_inbox | grep -i "$QUERY")
-    if [ -z "$RESULTS" ]; then
-      echo "NO MATCH"
-    else
-      echo "$RESULTS"
+    if ! gmail_inbox | grep -i "$QUERY"; then
+      echo "No messages matching \"$QUERY\". Exiting..."
     fi
+    RESULTS=$(gmail_inbox | grep -i "$QUERY")
 elif [ -z "$QUERY" ]; then
     echo
     INBOX=$(gmail_inbox)
