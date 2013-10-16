@@ -1,8 +1,17 @@
 #!/usr/bin/env bash
 
+########################################
+# GLOBAL VARS
+########################################
+
 ARGS="${*}"
 PROMPT="\n\xe2\x9e\x94"
 JITSURC="$HOME/.jitsurc"
+
+
+########################################
+# SETTINGS MODULE
+########################################
 
 function settings () {
     echo
@@ -60,6 +69,11 @@ function settings () {
   exit 1
 }
 
+
+########################################
+# MAN PAGE
+########################################
+
 function man_page () {
     echo
     echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
@@ -76,26 +90,26 @@ function man_page () {
 }
 
 
+########################################
+# ARGV PARSER
+########################################
+
 if [ "$ARGS" == "--settings" ]; then
   settings
 elif [ "$ARGS" == "--help" ]; then
   man_page
 fi
 
-echo
-echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-echo "☯ ☯ ☯ ☯ ☯ ☯    gmailjitsu    ☯ ☯ ☯ ☯ ☯ ☯"
-echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-echo
-echo -ne "Enter your search, or press enter to see all messages." $PROMPT " "
-read QUERY
+
+
+########################################
+# BASH STACK:
+########################################
 
 set -o errtrace
 set -o errexit
 set -o nounset
 
-
-# BASH STACK:
 
 declare -a stack
 stack_push () {
@@ -128,7 +142,10 @@ stack_err () {
 }
 
 
+
+########################################
 # BASH XML PARSER:
+########################################
 
 bash_xml_sax_parse () {
     handle_element_start="$1"
@@ -156,7 +173,10 @@ bash_xml_split () {
 }
 
 
+
+########################################
 # EXAMPLE: XML prettifier
+########################################
 
 xml_prettify () {
     bash_xml_sax_parse xml_prettify_start xml_prettify_end xml_prettify_characters
@@ -213,6 +233,22 @@ gmail_fetch_feed () {
 gmail_inbox () {
     gmail_fetch_feed | gmail_parse_feed
 }
+
+
+
+########################################
+# GMAIL CHECKER
+########################################
+
+echo
+echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+echo "☯ ☯ ☯ ☯ ☯ ☯    gmailjitsu    ☯ ☯ ☯ ☯ ☯ ☯"
+echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+echo
+echo -ne "Enter your search, or press enter to see all messages." $PROMPT " "
+read QUERY
+
+
 
 if [ ! -f $JITSURC ]; then
   echo -n "Username: "
