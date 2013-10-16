@@ -15,8 +15,8 @@ First and foremost it's a productivity hack - you can check for a specific email
 
 ## Installation ##
 
-1. Download it
-2. Put the `gmailjitsu` executable and all `.bash` files somewhere in your [`$PATH`](http://en.wikipedia.org/wiki/PATH_(variable)) and `chomod +x`
+1. Download it.
+2. Put the `gmailjitsu` executable somewhere in your [`$PATH`](http://en.wikipedia.org/wiki/PATH_(variable)) and `chomod +x` it.
 3. Open a shell and type `gmailjitsu --help`. Read...
 
 
@@ -25,6 +25,7 @@ First and foremost it's a productivity hack - you can check for a specific email
 Some cool ways to customise `gmailjitsu` may or may not include:
 * [`alias` it](https://wiki.archlinux.org/index.php/bash#Aliases) - maybe something like 'gj', or 'heeeyawh!', or "gMaIlJiTsU". 
 * run `gmailjitsu --settings` to save your Google account user name and/or password (if you dare).
+* Fashion some type of scheduled job that pipes output of a successful `gmailjitsu` call into some other place that will alert you if that important email comes in.
 
 
 ## TO-DO's ##
